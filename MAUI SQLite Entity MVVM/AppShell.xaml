@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="MAUI_SQLite_Entity_MVVM.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:p="clr-namespace:MAUI_SQLite_Entity_MVVM.Views.Pages"
+    xmlns:local="clr-namespace:MAUI_SQLite_Entity_MVVM"
+    Shell.FlyoutBehavior="Flyout"
+    Title="MAUI_SQLite_Entity_MVVM">
+
+    <ShellContent
+        Title="Home"
+        ContentTemplate="{DataTemplate local:MainPage}"
+        Route="MainPage" />
+    <ShellContent 
+        Title="TemplateListPage"
+        ContentTemplate="{DataTemplate p:TemplateListPage}"
+        Route="TemplateListPage"/>
+
+</Shell>

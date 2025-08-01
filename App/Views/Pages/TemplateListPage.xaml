@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:p="clr-namespace:MAUI_App.Views.Pages"
+             xmlns:vm="clr-namespace:MAUI_Core.ViewModels;assembly=MAUI_Core"
+             xmlns:m="clr-namespace:MAUI_Core.Models;assembly=MAUI_Core"
+             xmlns:controls="clr-namespace:MAUI_App.Views.Controls"
+             x:Class="MAUI_App.Views.Pages.TemplateListPage"
+             Title="TemplateListPage"
+             x:Name="ListPage"
+             x:DataType="vm:TemplateListViewModel">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="8*"/>
+        </Grid.RowDefinitions>
+        <SearchBar Grid.Row="0" Placeholder="Search templates..." Text="{Binding Query, Mode=TwoWay}"/>
+        <HorizontalStackLayout Grid.Row="1" HorizontalOptions="Center" Spacing="50">
+            <Button Text="Add" Command="{Binding CreateItemCommand}" />
+            <Button Text="Empty" Command="{Binding RemoveItemsCommand}" />
+        </HorizontalStackLayout>
+        <ScrollView Grid.Row="2">
+            <CollectionView ItemsSource="{Binding DisplayedItems, Mode=OneWay}" SelectedItem="{Binding SelectedItem, Mode=TwoWay}" >
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="m:Template">
+                        <SwipeView>
+                            <!-- TODO: Adapt SwipeView for Windows and MacOS -->
+                            <SwipeView.RightItems>
+                                <SwipeItems>
+                                    <SwipeItem
+                                        Text="Edit"
+                                        BackgroundColor="Orange"
+                                        Command="{Binding Source={RelativeSource AncestorType={x:Type vm:TemplateListViewModel}}, Path=NavigateToEditDetailsPageCommand}"
+                                        CommandParameter="{Binding .}" />
+                                    <SwipeItem
+                                        Text="Delete"
+                                        BackgroundColor="Red"
+                                        Command="{Binding Source={RelativeSource AncestorType={x:Type vm:TemplateListViewModel}}, Path=DeleteItemCommand}"
+                                        CommandParameter="{Binding .}" />
+                                </SwipeItems>
+                            </SwipeView.RightItems>
+                            <ContentView>
+                                <ContentView.GestureRecognizers>
+                                    <TapGestureRecognizer 
+                                        Command="{Binding Source={RelativeSource AncestorType={x:Type vm:TemplateListViewModel}}, Path=NavigateToViewDetailsPageCommand}" 
+                                        CommandParameter="{Binding .}" />
+                                </ContentView.GestureRecognizers>
+                                <controls:TemplateView />
+                            </ContentView>
+                        </SwipeView>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </ScrollView>
+    </Grid>
+</ContentPage>

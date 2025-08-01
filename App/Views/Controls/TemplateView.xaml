@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MAUI_App.Views.Controls.TemplateView"
+             xmlns:models="clr-namespace:MAUI_Core.Models;assembly=MAUI_Core"
+             x:DataType="models:Template">
+    <HorizontalStackLayout BackgroundColor="{StaticResource Primary}">
+        <Label Text="{Binding Id}" TextColor="{StaticResource White}" FontSize="20"/>
+    </HorizontalStackLayout>
+</ContentView>

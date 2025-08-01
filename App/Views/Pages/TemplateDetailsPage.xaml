@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:m="clr-namespace:MAUI_Core.Models;assembly=MAUI_Core"
+             xmlns:vm="clr-namespace:MAUI_Core.ViewModels;assembly=MAUI_Core"
+             x:Class="MAUI_App.Views.Pages.TemplateDetailsPage"
+             Title="TemplateDetailsPage"
+             x:DataType="vm:TemplateDetailsViewModel">
+    <VerticalStackLayout>
+        <ContentView BindingContext="{Binding Item}" x:DataType="m:Template">
+            <Entry IsPassword="False" IsEnabled="{Binding Source={RelativeSource AncestorType={x:Type vm:TemplateDetailsViewModel}}, Path=Editable}" Text="{Binding Id, Mode=TwoWay}"/>
+        </ContentView>
+    </VerticalStackLayout>
+</ContentPage>

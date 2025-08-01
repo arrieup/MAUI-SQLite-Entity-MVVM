@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="MAUI_App.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:p="clr-namespace:MAUI_App.Views.Pages"
+    xmlns:local="clr-namespace:MAUI_App"
+    Shell.FlyoutBehavior="Flyout"
+    Title="MAUI_SQLite_Entity_MVVM">
+
+    <FlyoutItem>
+        <Tab Title="Template" Icon="dotnet_bot.png">
+            <ShellContent Title="List"
+                          ContentTemplate="{DataTemplate p:TemplateListPage}" Route="TemplateListPage"/>
+            <ShellContent Title="Details"
+                          ContentTemplate="{DataTemplate p:TemplateDetailsPage}" Route="TemplateDetailsPage" />
+        </Tab>
+
+    </FlyoutItem>
+
+
+
+</Shell>
